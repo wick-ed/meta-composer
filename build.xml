@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="appserver-io/meta-composer" default="composer-init" basedir=".">
+
+    <!-- initialize ENV variable -->
+    <property environment="env" />
+
+    <!-- initialize file based properties -->
+    <property file="${basedir}/build.properties"/>
+    <property file="${basedir}/build.default.properties"/>
+    <property file="${basedir}/build.${os.family}.properties"/>
+
+    <!-- initialize the library specific properties -->
+    <property name="codepool" value="vendor"/>
+
+    <!-- initialize the directory where we can find the real build files -->
+    <property name="vendor.dir" value ="${basedir}/${codepool}" />
+
+    <!-- ==================================================================== -->
+    <!-- Installs all dependencies defined in composer.json                   -->
+    <!-- ==================================================================== -->
+    <target name="composer-install" description="Installs all dependencies defined in composer.json">
+        <exec dir="${basedir}" executable="composer">
+            <arg line="--no-interaction install"/>
+        </exec>
+    </target>
+
+    <!-- ==================================================================== -->
+    <!-- Updates composer dependencies defined in composer.json               -->
+    <!-- ==================================================================== -->
+    <target name="composer-update" description="Updates composer dependencies defined in composer.json">
+        <exec dir="${basedir}" executable="composer">
+            <arg line="--no-interaction update"/>
+        </exec>
+    </target>
+
+    <!-- ===================================================================== -->
+    <!-- Checks if the build- and deployment stub has already been initialized -->
+    <!-- ===================================================================== -->
+    <target name="composer-init">
+        <antcall target="composer-install"/>
+        <antcall target="composer-update"/>
+    </target>
+
+</project>

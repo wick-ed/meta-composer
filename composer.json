@@ -1,0 +1,38 @@
+{
+	"name" : "appserver-io/meta-composer",
+	"description" : "Inject common project meta information using composer",
+	"homepage" : "https://github.com/appserver-io/meta-composer",
+	"license" : "OSL-3.0",
+    "type": "composer-plugin",
+	"require" : {
+		"composer-plugin-api": "^1.0"
+	},
+    "require-dev" : {
+		"composer/composer": "dev-master"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"AppserverIo\\MetaComposer\\" : [
+				"src/"
+			]
+		}
+	},
+	"authors" : [{
+			"name" : "Bernhard Wick",
+			"email" : "bw@appserver.io",
+			"homepage" : "https://github.com/wick-ed",
+			"role" : "Developer"
+		}
+	],
+	"support" : {
+		"email" : "bw@appserver.io",
+		"issues" : "https://github.com/appserver-io/meta-composer/issues",
+		"source" : "https://github.com/appserver-io/meta-composer"
+	},
+	"keywords" : [
+		"php project meta composer plugin"
+	],
+    "extra": {
+        "class": "AppserverIo\\MetaComposer\\Plugin"
+    }
+}
